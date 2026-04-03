@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Altadena — Real Neighbors · Real News · Every Sunday</title>
+<meta name="description" content="A free weekly newsletter covering Altadena's recovery, rebuilding, local businesses, and community. Every Sunday morning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #0e1f16;
+    --forest-mid: #1e3d28;
+    --green: #4dc882;
+    --green-dk: #1e6b3a;
+    --ink: #111108;
+    --ink-mid: #333328;
+    --ink-light: #666655;
+    --rule: #d0ccc2;
+    --bg: #faf9f6;
+    --bg-warm: #f4f1eb;
+    --bg-section: #f0ece3;
+    --white: #ffffff;
+    --red: #b22222;
+    --amber: #c8850a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--forest);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(77,200,130,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(77,200,130,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Animated grain texture */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 680px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--green);
+    opacity: 0.5;
+  }
+
+  .hero-logo {
+    width: 280px;
+    height: auto;
+    display: block;
+    margin: 0 auto 32px;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.3));
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  /* Subscribe form */
+  .subscribe-form {
+    display: flex;
+    gap: 8px;
+    max-width: 460px;
+    margin: 0 auto 16px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .subscribe-form input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.06);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    backdrop-filter: blur(8px);
+  }
+
+  .subscribe-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .subscribe-form input:focus {
+    border-color: var(--green);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .subscribe-form button {
+    padding: 14px 24px;
+    background: var(--green);
+    color: var(--forest);
+    border: none;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  .subscribe-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .form-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: bounce 2s ease infinite;
+    z-index: 1;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .scroll-hint svg { opacity: 0.3; }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--bg-section);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 11px 24px;
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--green-dk);
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+
+  .ticker-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    flex-shrink: 0;
+  }
+
+  .ticker-sep { color: var(--rule); }
+
+  /* ── WHAT IS IT ── */
+  .what {
+    padding: 80px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .what-text .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-dk);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .what-text .label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--green-dk);
+  }
+
+  .what-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .what-text p {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .what-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .section-pill {
+    background: var(--bg-warm);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-mid);
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .section-pill:hover {
+    background: var(--white);
+    border-color: var(--green-dk);
+  }
+
+  .section-pill span { display: block; font-size: 16px; margin-bottom: 4px; }
+
+  /* ── PROMISE BAND ── */
+  .promise {
+    background: var(--forest);
+    padding: 64px 24px;
+  }
+
+  .promise-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .promise h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .promise h2 em { font-style: italic; color: var(--green); }
+
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .promise-item {
+    text-align: left;
+    padding: 24px;
+    border: 1px solid rgba(77,200,130,0.15);
+    border-radius: 4px;
+    background: rgba(77,200,130,0.03);
+  }
+
+  .promise-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .promise-item h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .promise-item p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  /* ── ISSUES ARCHIVE ── */
+  .issues {
+    padding: 80px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .section-header-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 2px;
+  }
+
+  .issue-card {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+
+  .issue-card:hover .issue-hed { color: var(--green-dk); }
+
+  .issue-date-block {
+    text-align: center;
+    background: var(--bg-warm);
+    border: 1px solid var(--rule);
+    padding: 10px 8px;
+  }
+
+  .issue-date-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--green-dk);
+    line-height: 1;
+    display: block;
+  }
+
+  .issue-date-mo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+  }
+
+  .issue-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    transition: color 0.15s;
+  }
+
+  .issue-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .issue-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--green-dk);
+    background: rgba(30,107,58,0.08);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .issue-arrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-dk);
+    white-space: nowrap;
+  }
+
+  .coming-soon {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--bg-warm);
+    border: 1px dashed var(--rule);
+    border-radius: 4px;
+  }
+
+  .coming-soon p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+
+  /* ── FOOTER CTA ── */
+  .footer-cta {
+    background: var(--green);
+    padding: 64px 24px;
+    text-align: center;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 12px;
+  }
+
+  .footer-cta p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(14,31,22,0.65);
+    margin-bottom: 28px;
+  }
+
+  .footer-cta .subscribe-form input {
+    border-color: rgba(14,31,22,0.2);
+    background: rgba(14,31,22,0.06);
+    color: var(--forest);
+  }
+
+  .footer-cta .subscribe-form input::placeholder { color: rgba(14,31,22,0.4); }
+  .footer-cta .subscribe-form input:focus { border-color: var(--forest); background: rgba(14,31,22,0.1); }
+
+  .footer-cta .subscribe-form button {
+    background: var(--forest);
+    color: var(--green);
+  }
+
+  .footer-cta .form-note { color: rgba(14,31,22,0.4); }
+
+  /* ── SITE FOOTER ── */
+  .site-footer {
+    background: var(--forest);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .site-footer img { height: 36px; width: auto; display: block; margin: 0 auto 16px; }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--green); }
+
+  .site-footer p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .what { grid-template-columns: 1fr; gap: 40px; }
+    .promise-grid { grid-template-columns: 1fr; }
+    .subscribe-form { flex-direction: column; }
+    .issue-card { grid-template-columns: 60px 1fr; }
+    .issue-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Altadena, CA &nbsp;·&nbsp; Est. April 2026</div>
+    <img class="hero-logo" src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/ec1d0f43-1dbb-4157-bc63-2ced86bdbc85/Mailing_Label_InsideAltadena-2.png?t=1775173976" alt="Inside Altadena">
+    <h1 class="hero-headline">
+      Altadena's story,<br><em>told every Sunday.</em>
+    </h1>
+    <p class="hero-sub">
+      A free weekly newsletter covering recovery, rebuilding, local businesses,<br>
+      community events, and the people making Altadena come back stronger.
+    </p>
+    <form class="subscribe-form" action="https://insidealtadena.beehiiv.com/subscribe" method="POST" target="_blank">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free</button>
+    </form>
+    <p class="form-note">Every Sunday at 9am &nbsp;·&nbsp; Unsubscribe anytime</p>
+  </div>
+  <div class="scroll-hint">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-label">This Week</span>
+    <span class="ticker-item">🏗 1,025+ homes now under construction</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">⚡ SCE settlement offers — deadline Nov. 30, 2026</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">🌺 Great Altadena Poppy Project signups open</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">🏫 No PUSD school closures decided yet</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">✨ Simply Divine Beauty Academy — free services for residents</span>
+    <span class="ticker-sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-label">This Week</span>
+    <span class="ticker-item">🏗 1,025+ homes now under construction</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">⚡ SCE settlement offers — deadline Nov. 30, 2026</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">🌺 Great Altadena Poppy Project signups open</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">🏫 No PUSD school closures decided yet</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">✨ Simply Divine Beauty Academy — free services for residents</span>
+    <span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- ── WHAT IS IT ── -->
+<section class="what">
+  <div class="what-text">
+    <div class="label">About the Newsletter</div>
+    <h2>Built by neighbors,<br>for neighbors.</h2>
+    <p>Inside Altadena is a free weekly newsletter covering everything happening in our community — from the latest recovery data to the businesses reopening down the street.</p>
+    <p>No agenda. No ads. No fabricated stories. Every claim linked to a real source. Delivered every Sunday morning.</p>
+  </div>
+  <div class="what-sections">
+    <div class="section-pill"><span>🔥</span>Fire Recovery</div>
+    <div class="section-pill"><span>🏗</span>Rebuilding</div>
+    <div class="section-pill"><span>🛍</span>Local Business</div>
+    <div class="section-pill"><span>📅</span>Events</div>
+    <div class="section-pill"><span>🌿</span>Outdoors</div>
+    <div class="section-pill"><span>🎓</span>Schools</div>
+    <div class="section-pill"><span>🗣</span>Community Voice</div>
+    <div class="section-pill"><span>✨</span>Something Good</div>
+  </div>
+</section>
+
+<!-- ── PROMISE ── -->
+<section class="promise">
+  <div class="promise-inner">
+    <h2>Our promise to<br><em>every reader.</em></h2>
+    <div class="promise-grid">
+      <div class="promise-item">
+        <div class="promise-num">01</div>
+        <h3>Every story is sourced</h3>
+        <p>Every fact links to a real source. If we can't verify it, we don't publish it.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">02</div>
+        <h3>Always free</h3>
+        <p>Inside Altadena will never charge for a subscription. This community has been through enough.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">03</div>
+        <h3>Community first</h3>
+        <p>No outside agenda. No corporate ownership. Just neighbors keeping neighbors informed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ISSUES ── -->
+<section class="issues">
+  <div class="section-header">
+    <h2>Past Issues</h2>
+    <div class="section-header-rule"></div>
+  </div>
+
+  <a href="https://insidealtadena.beehiiv.com" class="issue-card">
+    <div class="issue-date-block">
+      <span class="issue-date-num">6</span>
+      <span class="issue-date-mo">Apr 2026</span>
+    </div>
+    <div>
+      <div class="issue-hed">Vol. 1, Issue No. 1 — 1,025 Homes Rising, SCE Settlements, Great Altadena Poppy Project</div>
+      <div class="issue-tags">
+        <span class="issue-tag">Recovery</span>
+        <span class="issue-tag">Rebuilding</span>
+        <span class="issue-tag">Business</span>
+        <span class="issue-tag">Something Good</span>
+      </div>
+    </div>
+    <div class="issue-arrow">Read →</div>
+  </a>
+
+  <div class="coming-soon">
+    <p>Issue No. 2 arrives Sunday, April 13 &nbsp;·&nbsp; <a href="https://insidealtadena.beehiiv.com/subscribe" style="color:var(--green-dk); font-weight:600;">Subscribe to get it in your inbox →</a></p>
+  </div>
+</section>
+
+<!-- ── FOOTER CTA ── -->
+<section class="footer-cta">
+  <h2>Join your neighbors.</h2>
+  <p>Free every Sunday. Takes 10 seconds to subscribe.</p>
+  <form class="subscribe-form" style="justify-content:center;" action="https://insidealtadena.beehiiv.com/subscribe" method="POST" target="_blank">
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe Free</button>
+  </form>
+  <p class="form-note" style="color:rgba(14,31,22,0.4);">Unsubscribe anytime &nbsp;·&nbsp; No spam, ever</p>
+</section>
+
+<!-- ── SITE FOOTER ── -->
+<footer class="site-footer">
+  <img src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/ec1d0f43-1dbb-4157-bc63-2ced86bdbc85/Mailing_Label_InsideAltadena-2.png?t=1775173976" alt="Inside Altadena">
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#e68e838a8a89a68f88958f8283878a928782838887c885898b">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#bfd7dad3d3d0ffd6d1ccd6dbdaded3cbdedbdad1de91dcd0d2">Submit a Story</a>
+    <a href="/cdn-cgi/l/email-protection#6c04090000032c05021f0508090d00180d0809020d420f0301">Advertise</a>
+    <a href="https://insidealtadena.beehiiv.com/subscribe">Subscribe</a>
+  </
